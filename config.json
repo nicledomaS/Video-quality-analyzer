@@ -1,0 +1,34 @@
+{
+    "ffmpeg_tools" : "C:/Users/koval/Documents/github/vcpkg/installed/x64-windows/tools/ffmpeg",
+    "hwaccel": "dxva2",
+    "output_dir": "./output",
+    "profiles": [
+        {
+            "codec": "h264",
+            "size": "1080p",
+            "bitrate": 2500,
+            "profile_name": "main",
+            "bframes": 0,
+            "br_variable": 100
+        },
+        {
+            "codec": "h264",
+            "size": "1080p",
+            "bitrate": 5000,
+            "profile_name": "main",
+            "bframes": 0,
+            "br_variable": 200
+        },
+        {
+            "codec": "h264",
+            "size": "720p",
+            "bitrate": 2500,
+            "profile_name": "main",
+            "bframes": 0,
+            "br_variable": 200
+        }
+    ],
+    "metrics": [
+        "PSNR"
+    ]
+}
