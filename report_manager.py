@@ -1,5 +1,3 @@
-import os
-import re
 import xlsxwriter
 
 from psnr_report import PsnrReport
@@ -22,7 +20,7 @@ class ReportManager:
     column_names = ["File name", "Size", "Diff in %", "Psnr avg", "The worst psrn", "Vmaf avg", "The worst vmaf", "Vmaf_phone avg", "The worst vmaf_phone"]
 
     def __init__(self, output_dir):
-        self.workbook = xlsxwriter.Workbook(output_dir + "/report.xlsx", {'nan_inf_to_errors': True})
+        self.workbook = xlsxwriter.Workbook(output_dir + '/report.xlsx', {'nan_inf_to_errors': True, 'in_memory': True})
         self.worksheet = self.workbook.add_worksheet("Common")
         alfa = 0
         for column_name in self.column_names:
@@ -34,7 +32,7 @@ class ReportManager:
         self.report_builders["VMAF"] = VmafReport(self.workbook, self.worksheet, 5, 6)
         self.report_builders["VMAF_phone"] = VmafPhoneReport(self.workbook, self.worksheet, 7, 8)
 
-    def __del__(self):
+    def close(self):
         self.workbook.close()
 
     def add_report(self, report_data):
