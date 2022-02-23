@@ -61,3 +61,5 @@ if __name__ == "__main__":
     for report_data in report_datas:
         report_manager.add_report(report_data)
 
+    report_manager.close()
+
